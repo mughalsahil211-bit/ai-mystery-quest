@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Mystery Quest | Detective Bureau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">MQ</div><div><b>MYSTERY QUEST</b><small>DETECTIVE BUREAU</small></div></div>
+    <div class="profile"><div class="avatar">♟</div><div><b>Field Detective</b><small>Junior Investigator</small></div></div>
+    <div class="side-label">YOUR DESK</div>
+    <button class="nav active" data-view="case"><span>⌕</span> Current Case</button>
+    <button class="nav" data-view="history"><span>◷</span> Case Archives</button>
+    <div class="sidebar-bottom"><div class="status-dot"></div><span>Secure connection</span><small id="mode-label">DEMO MODE</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">INVESTIGATION / <span id="case-breadcrumb">NEW CASE</span></div><h1 id="page-title">The case is yours.</h1></div><div class="top-actions"><div class="score-pill">✦ <span id="score">000</span><small>POINTS</small></div><button class="primary-btn" id="new-case">＋ New case</button></div></header>
+    <section id="case-view">
+      <div class="case-hero"><div class="hero-copy"><div class="case-kicker"><span class="live-dot"></span> ACTIVE INVESTIGATION <span class="tag" id="difficulty-tag">EASY</span></div><h2 id="case-title">Loading your case…</h2><p id="case-story"></p><div class="hero-meta"><span>▣ <b id="case-category">Mystery</b></span><span>♙ <b id="suspect-count">0 suspects</b></span><span>⌖ <b id="evidence-count">0 clues</b></span></div></div><div class="case-stamp"><span>CONFIDENTIAL</span><b>CASE<br>FILE</b><small>MQ / 001</small></div></div>
+      <div class="progress-wrap"><div class="progress-label"><span>INVESTIGATION PROGRESS</span><b id="progress-text">0% COMPLETE</b></div><div class="progress"><i id="progress-bar"></i></div></div>
+      <div class="workspace">
+        <div class="left-column">
+          <section class="panel"><div class="panel-head"><div><span class="section-no">01 / PEOPLE</span><h3>Suspect profiles</h3></div><span class="muted" id="people-count">—</span></div><div id="suspects" class="suspect-grid"></div></section>
+          <section class="panel"><div class="panel-head"><div><span class="section-no">02 / CLUES</span><h3>Evidence locker</h3></div><span class="muted">CASE MATERIAL</span></div><div id="evidence" class="evidence-list"></div></section>
+          <section class="panel"><div class="panel-head"><div><span class="section-no">03 / REASONING</span><h3>Logic challenge</h3></div><span class="tag">EARN POINTS</span></div><div id="puzzles"></div></section>
+          <section class="panel accusation-panel"><div class="panel-head"><div><span class="section-no">04 / VERDICT</span><h3>Make your accusation</h3></div><span class="muted">FINAL DECISION</span></div><p class="muted">Review your notes. Who do you believe is responsible?</p><div class="accuse-row"><select id="accuse-select"><option value="">Select a suspect…</option></select><button class="primary-btn" id="accuse-btn">Submit verdict →</button></div><div id="verdict-result"></div></section>
+        </div>
+        <div class="right-column">
+          <section class="panel tools-panel"><div class="panel-head"><div><span class="section-no">FIELD TOOLS</span><h3>Detective toolkit</h3></div><span class="tool-icon">✧</span></div><button class="tool-button" id="hint-btn"><span>✦</span><div><b>Request a hint</b><small>Progressive clues · costs 25 pts</small></div><i>→</i></button><div id="hint-output" class="hint-output hidden"></div><div class="divider"></div><div class="panel-head chat-head"><div><span class="section-no">AI ASSISTANT</span><h3>Detective AI</h3></div><span class="ai-live">● ONLINE</span></div><div class="chat-box" id="chat-box"><div class="chat-message bot"><span class="bot-avatar">AI</span><p>Detective, I'm reviewing the case file. Ask me about timelines, motives, alibis, or evidence connections.</p></div></div><form id="chat-form" class="chat-form"><input id="chat-input" placeholder="Ask the detective…" autocomplete="off"><button aria-label="Send">↑</button></form><div class="chat-note">AI responses are based on the active case file.</div></section>
+          <section class="panel stats-panel"><div class="panel-head"><div><span class="section-no">YOUR RECORD</span><h3>Detective stats</h3></div></div><div class="stats-grid"><div><b id="stat-score">0</b><small>TOTAL SCORE</small></div><div><b id="stat-completed">0</b><small>CASES SOLVED</small></div><div><b id="stat-attempts">0</b><small>CASES PLAYED</small></div></div></section>
+          <div class="tip-card"><span>FIELD NOTE</span><p>“A good detective doesn't chase the loudest clue. They follow the evidence that can be verified.”</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="history-view" class="hidden"><div class="panel archive-panel"><div class="panel-head"><div><span class="section-no">YOUR RECORDS</span><h3>Case archives</h3></div><button class="text-btn" id="back-to-case">← Back to investigation</button></div><div id="history-list"></div></div></section>
+    <footer>AI MYSTERY QUEST <span>•</span> THINK CLEARLY. FOLLOW THE EVIDENCE.</footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body></html>
